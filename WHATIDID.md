@@ -5,6 +5,7 @@
 
 ## HTML
 * Changed the img sources to the new and location (img/)
+* Inlined the google font css
 * Inlined the minified normal css
 * Added media print to specific print stylesheet
 * Moved Javascript to the end of the body tag
