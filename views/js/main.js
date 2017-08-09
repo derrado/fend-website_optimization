@@ -513,8 +513,8 @@ function updatePositions() {
   var top = document.body.scrollTop / 1250;
 
   // Calculate the 5 offsets outside the main loop into an array
-  for(var i = 0; i < 5; i++) {
-    offset[i] = Math.sin(top + i);
+  for(var j = 0; j < 5; j++) {
+    offset[j] = Math.sin(top + j);
   }
 
   // Main loop
