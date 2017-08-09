@@ -29,6 +29,7 @@ No build tools were used, minifiy and image-optim through online services
 
 ### Modified JS (main.js)
 Listed below are the main changes in the file
+
 #### EventListener Scroll
 * Function now calls updatePositions() via rAF
 
@@ -36,11 +37,11 @@ Listed below are the main changes in the file
 * Reduced number of floating pizzas to 40, which results in 5 rows of pizzas drawn
 * Removed height and width on elem-creation (obsolete after image-resize and css-style fix)
 * Changed image to the new, smaller version
-* Set floating_pizzas variable once, holds all .mover divs
+* Set floatingPizzas variable once, holds all .mover divs
 
 #### Function updatePositions()
 * Moved calls to document.body.scrollTop out of the loop
-* Pizzas now move through translateX instead of style.left
+* Calculating offsets for the pizzas now out of the loop in a dedicated function
 
 ### Images
 * Created new (smaller) image for the floating pizzas, so the browser has no need to resize them

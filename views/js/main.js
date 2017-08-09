@@ -502,7 +502,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Hold the floating pizza divs
-var floating_pizzas;
+var floatingPizzas;
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
@@ -510,19 +510,18 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var offset = [];
-  var top = document.body.scrollTop;
+  var top = document.body.scrollTop / 1250;
 
   // Calculate the 5 offsets outside the main loop into an array
   for(var i = 0; i < 5; i++) {
-    offset[i] = 100 * Math.sin((top / 1250) + (i % 5));
+    offset[i] = Math.sin(top + i);
   }
 
   // Main loop
-  for (var i = 0; i < floating_pizzas.length; i++) {
+  for (var i = 0; i < floatingPizzas.length; i++) {
     // Calculate the new horizontal position for the pizza
-    var posx = floating_pizzas[i].basicLeft + offset[i%5];
-    // translateX in combination with will-change is cheaper than style.left, so we're using this one
-    floating_pizzas[i].style.transform = ('translateX(' + posx + 'px)');
+    var posx = floatingPizzas[i].basicLeft + 100 * offset[i%5];
+    floatingPizzas[i].style.left = posx + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -558,6 +557,6 @@ document.addEventListener('DOMContentLoaded', function() {
     movingPizzas.appendChild(elem);
   }
   // Set once for later reference
-  floating_pizzas = document.getElementsByClassName('mover');
+  floatingPizzas = document.getElementsByClassName('mover');
   updatePositions();
 });
