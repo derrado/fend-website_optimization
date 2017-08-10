@@ -472,9 +472,10 @@ var resizePizzas = function(size) {
 
 window.performance.mark("mark_start_generating"); // collect timing data
 
+// Pull this out of the loop, only need to look this up once
+var pizzasDiv = document.getElementById("randomPizzas");
 // This for-loop actually creates and appends all of the pizzas when the page loads
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -542,13 +543,17 @@ window.addEventListener('scroll', function() {
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 8;
   var s = 256;
+  var cols = 8;
+  // Calculate the needed rows according to screen height
+  var rows = Math.floor(window.screen.height / s);
+
+  console.log(rows);
 
   // Pull this out of the loop, only need to look this up once
   var movingPizzas = document.getElementById('movingPizzas1');
 
-  for (var i = 0; i < 40; i++) {
+  for (var i = 0; i < (cols * rows); i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza_small.png";

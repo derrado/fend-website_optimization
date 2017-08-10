@@ -34,7 +34,7 @@ Listed below are the main changes in the file
 * Function now calls updatePositions() via rAF
 
 #### EventListener DomContentLoaded
-* Reduced number of floating pizzas to 40, which results in 5 rows of pizzas drawn
+* Reduced number of floating pizzas to a calculated number which depends on window.screen.height
 * Removed height and width on elem-creation (obsolete after image-resize and css-style fix)
 * Changed image to the new, smaller version
 * Set floatingPizzas variable once, holds all .mover divs
@@ -48,7 +48,8 @@ Listed below are the main changes in the file
 
 ### CSS
 * Added will-change: transform; to .mover
-* Reduzed width to 100px in .mover
+* Set width to 73.333px in .mover
+* Set height to 100px in .mover
 
 ## Part 3: Changing Pizza-Sizes in under <5ms
 
